@@ -10,7 +10,6 @@
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
             background-color: #0b0e14;
-            /* IT & Siber Güvenlik Temalı Siber Izgara Arka Planı */
             background-image: 
                 radial-gradient(circle at 50% 0%, rgba(31, 111, 235, 0.15) 0%, transparent 75%),
                 linear-gradient(rgba(22, 27, 34, 0.7) 1px, transparent 1px),
@@ -55,7 +54,6 @@
             font-weight: 500;
         }
         
-        /* İletişim Butonları */
         .contact-links {
             display: flex;
             justify-content: center;
@@ -92,7 +90,6 @@
             border: 1px solid #30363d; 
         }
 
-        /* Menü Navigasyonu */
         nav {
             display: flex;
             gap: 10px;
@@ -126,7 +123,6 @@
             box-shadow: 0 0 12px rgba(31, 111, 235, 0.4);
         }
 
-        /* Sekme İçerikleri */
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
@@ -144,24 +140,108 @@
             border-radius: 8px;
             padding: 18px 22px;
             margin-bottom: 15px;
-            transition: border-color 0.2s ease;
-        }
-
-        .card:hover {
-            border-color: #8b949e;
         }
 
         .card h3 { color: #58a6ff; margin-bottom: 6px; font-size: 1.1rem; }
         .card .date { color: #8b949e; font-size: 0.8rem; margin-bottom: 10px; }
-        
-        code {
+
+        /* AÇILIR/KAPANIR AKORDEON KART YAPISI */
+        .accordion-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+
+        .accordion-card:hover {
+            border-color: #58a6ff;
+        }
+
+        .accordion-header {
+            padding: 18px 22px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            background: #161b22;
+        }
+
+        .accordion-header h3 {
+            color: #58a6ff;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .accordion-header .icon {
+            color: #8b949e;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-card.open .accordion-header .icon {
+            transform: rotate(180deg);
+            color: #58a6ff;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 0 22px 22px 22px;
+            border-top: 1px solid #21262d;
             background: #0d1117;
+        }
+
+        .accordion-card.open .accordion-content {
+            display: block;
+        }
+
+        .accordion-content p {
+            margin-top: 12px;
+            color: #c9d1d9;
+        }
+
+        .accordion-content ol, .accordion-content ul {
+            margin: 12px 0 12px 20px;
+            color: #c9d1d9;
+        }
+
+        .accordion-content li {
+            margin-bottom: 8px;
+        }
+
+        .alert-box {
+            background: rgba(210, 153, 34, 0.1);
+            border: 1px solid rgba(210, 153, 34, 0.4);
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-top: 15px;
+            color: #e3b341;
+            font-size: 0.9rem;
+        }
+
+        code-block {
+            display: block;
+            background: #161b22;
             color: #79c0ff;
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 10px 14px;
+            border-radius: 6px;
             font-family: 'Consolas', 'Courier New', monospace;
             border: 1px solid #30363d;
             font-size: 0.9rem;
+            margin: 8px 0;
+            overflow-x: auto;
+        }
+
+        code {
+            background: #161b22;
+            color: #79c0ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            border: 1px solid #30363d;
+            font-size: 0.85rem;
         }
     </style>
 </head>
@@ -178,7 +258,7 @@
             </div>
         </header>
 
-        <!-- Menü Butonları -->
+        <!-- Menü Navigasyonu -->
         <nav>
             <button class="nav-btn active" onclick="openTab('ana-sayfa')">Ana Sayfa</button>
             <button class="nav-btn" onclick="openTab('cmd')">CMD Komutları</button>
@@ -189,20 +269,56 @@
         <div id="ana-sayfa" class="tab-content active">
             <h2 class="section-title">Son Güncellemeler</h2>
             <div class="card">
-                <h3>Kategori ve Tasarım Güncellemesi</h3>
+                <h3>CMD Rehberi Eklendi</h3>
                 <div class="date">15 Eylül 2026</div>
-                <p>Kişisel IT portalı aktif edildi. CMD ve PowerShell bölümleri için komut paylaşımları yakında eklenecektir.</p>
+                <p>Windows güncelleştirme artıklarını temizleme rehberi "CMD Komutları" sekmesine eklendi.</p>
             </div>
         </div>
 
         <!-- 2. SEKME: CMD KOMUTLARI -->
         <div id="cmd" class="tab-content">
-            <h2 class="section-title">Command Prompt (CMD) Komutları</h2>
-            <div class="card">
-                <h3>Ağ Yapılandırmasını Kontrol Etme</h3>
-                <div class="date">Örnek Taslak</div>
-                <p>IP adresi ve ağ detaylarını detaylıca görüntülemek için <code>ipconfig /all</code> komutunu kullanabilirsiniz.</p>
+            <h2 class="section-title">Command Prompt (CMD) Rehberleri</h2>
+
+            <!-- AÇILIR KAPANIR YAZI KARTI -->
+            <div class="accordion-card">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <h3>Windows Makinelerde Güncelleştirmelerin Kapladığı Gereksiz Alanlar Nasıl Temizlenir? 🧹💻</h3>
+                    <span class="icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p>Windows güncellemeleri zamanla diskte gigabaytlarca eski dosya kalıntısı ve yedek biriktirir. Bu birikme genellikle <strong>WinSxS</strong> klasöründe olur ve normal disk temizleme araçları buraya dokunamaz.</p>
+                    <p>Sisteminizi yormadan ve bozmadan diskte nasıl yer açacağınızı adım adım anlatıyorum:</p>
+
+                    <ol>
+                        <li>
+                            <strong>Ne Kadar Gereksiz Alan Var Analiz Edin:</strong><br>
+                            Öncelikle Komut İstemi'ni (CMD) <strong>Yönetici</strong> olarak açın ve şu komutu girin:
+                            <code-block>dism /online /cleanup-image /analyzecomponentstore</code-block>
+                            Çıktıda <em>"Component Store Cleanup Recommended : Yes"</em> yazıyorsa disk temizliği yapmanız şart demektir.
+                        </li>
+                        <li>
+                            <strong>Eski Güncelleştirme Artıklarını Temizleyin:</strong><br>
+                            Analizden sonra silinebilir durumdaki tüm eski güncelleştirme yedeklerini temizlemek için şu komutu çalıştırın:
+                            <code-block>dism /online /cleanup-image /startcomponentcleanup</code-block>
+                            <em>(Bu işlem sisteminize bağlı olarak 10-15 GB'a kadar alan boşaltabilir.)</em>
+                        </li>
+                    </ol>
+
+                    <div class="alert-box">
+                        <strong>⚠️ Önemli İpucu: Takılı Kalırsa Ne Yapmalısınız?</strong><br>
+                        Temizlik veya onarım aşamasında gösterge %60 - %70 civarlarında takılıp saatlerce ilerlemeyebilir.
+                        <ul style="margin-top: 8px;">
+                            <li><strong>Hemen Kapatmayın:</strong> Arka planda indirme/silme yapıyor olabilir. <code>Ctrl + Shift + Esc</code> ile Görev Yöneticisi'ni açıp Disk/Ağ hareketliliğini kontrol edin.</li>
+                            <li><strong>Kilitlendiyse:</strong> CMD penceresini kapatıp bilgisayarı yeniden başlatın. CMD'yi tekrar yönetici açıp şu komutla servisi sıfırlayarak işlemi yeniden başlatın:</li>
+                        </ul>
+                        <code-block>net stop wuauserv</code-block>
+                        <code-block>dism /online /cleanup-image /startcomponentcleanup</code-block>
+                    </div>
+
+                    <p style="margin-top: 15px;">İşlem sonunda <em>"The operation completed successfully"</em> yazısını gördüğünüzde sisteminizdeki tüm güncelleştirme çöpleri temizlenmiş olur! 🚀</p>
+                </div>
             </div>
+
         </div>
 
         <!-- 3. SEKME: POWERSHELL KOMUTLARI -->
@@ -218,6 +334,7 @@
     </div>
 
     <script>
+        // Sekme Değiştirme Fonksiyonu
         function openTab(tabName) {
             var i, tabContent, tabBtns;
             tabContent = document.getElementsByClassName("tab-content");
@@ -230,6 +347,12 @@
             }
             document.getElementById(tabName).classList.add("active");
             event.currentTarget.classList.add("active");
+        }
+
+        // Akordeon Aç/Kapat Fonksiyonu
+        function toggleAccordion(element) {
+            var card = element.parentElement;
+            card.classList.toggle("open");
         }
     </script>
 
