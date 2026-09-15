@@ -6,30 +6,54 @@
     <title>Berkay Aksoy | System Support</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0d1117;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: #0b0e14;
+            /* IT & Siber Güvenlik Temalı Siber Izgara Arka Planı */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(31, 111, 235, 0.15) 0%, transparent 75%),
+                linear-gradient(rgba(22, 27, 34, 0.7) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(22, 27, 34, 0.7) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
             color: #c9d1d9;
             line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
         }
+
         .container {
             max-width: 850px;
             margin: 30px auto;
-            background: #161b22;
+            background: rgba(22, 27, 34, 0.85);
+            backdrop-filter: blur(8px);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(56, 139, 253, 0.1);
             border: 1px solid #30363d;
         }
+
         header {
             text-align: center;
             padding-bottom: 20px;
             border-bottom: 1px solid #30363d;
             margin-bottom: 25px;
         }
-        h1 { color: #58a6ff; font-size: 2.2rem; margin-bottom: 8px; }
-        p.subtitle { color: #8b949e; font-size: 1rem; margin-bottom: 15px; }
+
+        h1 { 
+            color: #58a6ff; 
+            font-size: 2.2rem; 
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 10px rgba(88, 166, 255, 0.2);
+        }
+
+        p.subtitle { 
+            color: #8b949e; 
+            font-size: 0.95rem; 
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
         
         /* İletişim Butonları */
         .contact-links {
@@ -37,45 +61,69 @@
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
         }
+
         .btn {
-            display: inline-block;
-            padding: 6px 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 16px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
-            transition: opacity 0.2s;
+            transition: all 0.2s ease;
         }
-        .btn:hover { opacity: 0.85; }
-        .btn-linkedin { background-color: #0a66c2; color: #ffffff; }
-        .btn-email { background-color: #21262d; color: #58a6ff; border: 1px solid #30363d; }
+
+        .btn:hover { 
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-linkedin { 
+            background-color: #0a66c2; 
+            color: #ffffff; 
+            box-shadow: 0 0 10px rgba(10, 102, 194, 0.3);
+        }
+
+        .btn-email { 
+            background-color: #21262d; 
+            color: #58a6ff; 
+            border: 1px solid #30363d; 
+        }
 
         /* Menü Navigasyonu */
         nav {
             display: flex;
             gap: 10px;
             border-bottom: 1px solid #30363d;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
             margin-bottom: 25px;
         }
+
         .nav-btn {
-            background: #21262d;
+            background: #161b22;
             color: #8b949e;
             border: 1px solid #30363d;
-            padding: 10px 18px;
+            padding: 10px 20px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
         }
-        .nav-btn:hover { color: #c9d1d9; border-color: #8b949e; }
+
+        .nav-btn:hover { 
+            color: #f0f6fc; 
+            border-color: #8b949e; 
+            background: #21262d;
+        }
+
         .nav-btn.active {
             background: #1f6feb;
             color: #ffffff;
             border-color: #1f6feb;
+            box-shadow: 0 0 12px rgba(31, 111, 235, 0.4);
         }
 
         /* Sekme İçerikleri */
@@ -84,26 +132,36 @@
 
         .section-title {
             color: #f0f6fc;
-            margin: 15px 0;
-            font-size: 1.4rem;
-            border-left: 4px solid #58a6ff;
+            margin: 20px 0 15px 0;
+            font-size: 1.3rem;
+            border-left: 4px solid #1f6feb;
             padding-left: 10px;
         }
+
         .card {
-            background: #21262d;
+            background: #161b22;
             border: 1px solid #30363d;
             border-radius: 8px;
-            padding: 15px 20px;
+            padding: 18px 22px;
             margin-bottom: 15px;
+            transition: border-color 0.2s ease;
         }
-        .card h3 { color: #58a6ff; margin-bottom: 5px; font-size: 1.1rem; }
-        .card .date { color: #8b949e; font-size: 0.8rem; margin-bottom: 8px; }
+
+        .card:hover {
+            border-color: #8b949e;
+        }
+
+        .card h3 { color: #58a6ff; margin-bottom: 6px; font-size: 1.1rem; }
+        .card .date { color: #8b949e; font-size: 0.8rem; margin-bottom: 10px; }
+        
         code {
-            background: #161b22;
+            background: #0d1117;
             color: #79c0ff;
-            padding: 3px 6px;
+            padding: 4px 8px;
             border-radius: 4px;
-            font-family: monospace;
+            font-family: 'Consolas', 'Courier New', monospace;
+            border: 1px solid #30363d;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -112,7 +170,7 @@
     <div class="container">
         <header>
             <h1>Berkay Aksoy</h1>
-            <p class="subtitle">System Support & Teknik İpuçları</p>
+            <p class="subtitle">System Support & Technical Knowledge Base</p>
             
             <div class="contact-links">
                 <a href="https://www.linkedin.com/in/berkay-aksoy-77ab60190" target="_blank" class="btn btn-linkedin">LinkedIn Profilim</a>
@@ -129,44 +187,36 @@
 
         <!-- 1. SEKME: ANA SAYFA -->
         <div id="ana-sayfa" class="tab-content active">
-            <h2 class="section-title">Hakkımda</h2>
-            <p>Merhaba! Sistem destek süreçleri, CMD ve PowerShell komutları hakkında aldığım notları ve ipuçlarını bu portal üzerinden paylaşacağım.</p>
-            
-            <h2 class="section-title" style="margin-top: 25px;">Son Paylaşımlar</h2>
+            <h2 class="section-title">Son Güncellemeler</h2>
             <div class="card">
-                <h3>Siteye Menü Yapısı Eklendi</h3>
+                <h3>Kategori ve Tasarım Güncellemesi</h3>
                 <div class="date">15 Eylül 2026</div>
-                <p>CMD ve PowerShell komutları için özel kategoriler oluşturuldu.</p>
+                <p>Kişisel IT portalı aktif edildi. CMD ve PowerShell bölümleri için komut paylaşımları yakında eklenecektir.</p>
             </div>
         </div>
 
         <!-- 2. SEKME: CMD KOMUTLARI -->
         <div id="cmd" class="tab-content">
             <h2 class="section-title">Command Prompt (CMD) Komutları</h2>
-            <p style="margin-bottom: 15px;">Sık kullanılan sistem ve ağ CMD komutları burada yer alacaktır.</p>
-
             <div class="card">
                 <h3>Ağ Yapılandırmasını Kontrol Etme</h3>
                 <div class="date">Örnek Taslak</div>
-                <p>IP adresi ve ağ detaylarını görüntülemek için <code>ipconfig /all</code> komutunu kullanabilirsiniz.</p>
+                <p>IP adresi ve ağ detaylarını detaylıca görüntülemek için <code>ipconfig /all</code> komutunu kullanabilirsiniz.</p>
             </div>
         </div>
 
         <!-- 3. SEKME: POWERSHELL KOMUTLARI -->
         <div id="powershell" class="tab-content">
             <h2 class="section-title">PowerShell Komutları & Scriptler</h2>
-            <p style="margin-bottom: 15px;">Gelişmiş sistem yönetimi ve otomasyon komutları burada yer alacaktır.</p>
-
             <div class="card">
-                <h3>Servis Durumlarını Listeleme</h3>
+                <h3>Çalışan Servisleri Listeleyin</h3>
                 <div class="date">Örnek Taslak</div>
-                <p>Çalışan sistem servislerini listelemek için <code>Get-Service | Where-Object {$_.Status -eq "Running"}</code> komutunu kullanabilirsiniz.</p>
+                <p>Sistemde aktif çalışan servisleri listelemek için <code>Get-Service | Where-Object {$_.Status -eq "Running"}</code> komutunu kullanabilirsiniz.</p>
             </div>
         </div>
 
     </div>
 
-    <!-- Sekme Değiştirme JS Kodları -->
     <script>
         function openTab(tabName) {
             var i, tabContent, tabBtns;
