@@ -29,7 +29,29 @@
             margin-bottom: 30px;
         }
         h1 { color: #58a6ff; font-size: 2.5rem; margin-bottom: 10px; }
-        p.subtitle { color: #8b949e; font-size: 1.1rem; }
+        p.subtitle { color: #8b949e; font-size: 1.1rem; margin-bottom: 15px; }
+        
+        /* İletişim ve Link Butonları */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.85; }
+        .btn-linkedin { background-color: #0a66c2; color: #ffffff; }
+        .btn-email { background-color: #21262d; color: #58a6ff; border: 1px solid #30363d; }
+
         .section-title {
             color: #f0f6fc;
             margin: 25px 0 15px 0;
@@ -49,10 +71,16 @@
     </style>
 </head>
 <body>
+
     <div class="container">
         <header>
             <h1>Berkay Aksoy</h1>
             <p class="subtitle">Kişisel Web Sayfası ve Paylaşımlar</p>
+            
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/berkay-aksoy-77ab60190" target="_blank" class="btn btn-linkedin">LinkedIn Profilim</a>
+                <a href="mailto:berrkayaksoy@gmail.com" class="btn btn-email">✉ berrkayaksoy@gmail.com</a>
+            </div>
         </header>
 
         <h2 class="section-title">Hakkımda</h2>
@@ -65,5 +93,6 @@
             <p>GitHub Pages kullanarak web sitemi güncelledim.</p>
         </div>
     </div>
+
 </body>
 </html>
