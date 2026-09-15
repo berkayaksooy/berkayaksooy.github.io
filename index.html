@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berkay Aksoy</title>
+    <title>Berkay Aksoy | System Support</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -14,8 +14,8 @@
             padding: 20px;
         }
         .container {
-            max-width: 800px;
-            margin: 40px auto;
+            max-width: 850px;
+            margin: 30px auto;
             background: #161b22;
             padding: 30px;
             border-radius: 12px;
@@ -26,36 +26,66 @@
             text-align: center;
             padding-bottom: 20px;
             border-bottom: 1px solid #30363d;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
-        h1 { color: #58a6ff; font-size: 2.5rem; margin-bottom: 10px; }
-        p.subtitle { color: #8b949e; font-size: 1.1rem; margin-bottom: 15px; }
+        h1 { color: #58a6ff; font-size: 2.2rem; margin-bottom: 8px; }
+        p.subtitle { color: #8b949e; font-size: 1rem; margin-bottom: 15px; }
         
-        /* İletişim ve Link Butonları */
+        /* İletişim Butonları */
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-bottom: 20px;
         }
         .btn {
             display: inline-block;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: opacity 0.2s;
         }
         .btn:hover { opacity: 0.85; }
         .btn-linkedin { background-color: #0a66c2; color: #ffffff; }
         .btn-email { background-color: #21262d; color: #58a6ff; border: 1px solid #30363d; }
 
+        /* Menü Navigasyonu */
+        nav {
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        .nav-btn {
+            background: #21262d;
+            color: #8b949e;
+            border: 1px solid #30363d;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover { color: #c9d1d9; border-color: #8b949e; }
+        .nav-btn.active {
+            background: #1f6feb;
+            color: #ffffff;
+            border-color: #1f6feb;
+        }
+
+        /* Sekme İçerikleri */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
         .section-title {
             color: #f0f6fc;
-            margin: 25px 0 15px 0;
-            font-size: 1.5rem;
+            margin: 15px 0;
+            font-size: 1.4rem;
             border-left: 4px solid #58a6ff;
             padding-left: 10px;
         }
@@ -66,8 +96,15 @@
             padding: 15px 20px;
             margin-bottom: 15px;
         }
-        .card h3 { color: #58a6ff; margin-bottom: 5px; }
-        .card .date { color: #8b949e; font-size: 0.85rem; margin-bottom: 10px; }
+        .card h3 { color: #58a6ff; margin-bottom: 5px; font-size: 1.1rem; }
+        .card .date { color: #8b949e; font-size: 0.8rem; margin-bottom: 8px; }
+        code {
+            background: #161b22;
+            color: #79c0ff;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
@@ -75,7 +112,7 @@
     <div class="container">
         <header>
             <h1>Berkay Aksoy</h1>
-            <p class="subtitle">Kişisel Web Sayfası ve Paylaşımlar</p>
+            <p class="subtitle">System Support & Teknik İpuçları</p>
             
             <div class="contact-links">
                 <a href="https://www.linkedin.com/in/berkay-aksoy-77ab60190" target="_blank" class="btn btn-linkedin">LinkedIn Profilim</a>
@@ -83,16 +120,68 @@
             </div>
         </header>
 
-        <h2 class="section-title">Hakkımda</h2>
-        <p>Merhaba! Burası benim kişisel web sayfam. Projelerimi ve güncellemelerimi buradan paylaşacağım.</p>
+        <!-- Menü Butonları -->
+        <nav>
+            <button class="nav-btn active" onclick="openTab('ana-sayfa')">Ana Sayfa</button>
+            <button class="nav-btn" onclick="openTab('cmd')">CMD Komutları</button>
+            <button class="nav-btn" onclick="openTab('powershell')">PowerShell Komutları</button>
+        </nav>
 
-        <h2 class="section-title">Son Paylaşımlarım</h2>
-        <div class="card">
-            <h3>İlk Web Sitem Yayında!</h3>
-            <div class="date">15 Eylül 2026</div>
-            <p>GitHub Pages kullanarak web sitemi güncelledim.</p>
+        <!-- 1. SEKME: ANA SAYFA -->
+        <div id="ana-sayfa" class="tab-content active">
+            <h2 class="section-title">Hakkımda</h2>
+            <p>Merhaba! Sistem destek süreçleri, CMD ve PowerShell komutları hakkında aldığım notları ve ipuçlarını bu portal üzerinden paylaşacağım.</p>
+            
+            <h2 class="section-title" style="margin-top: 25px;">Son Paylaşımlar</h2>
+            <div class="card">
+                <h3>Siteye Menü Yapısı Eklendi</h3>
+                <div class="date">15 Eylül 2026</div>
+                <p>CMD ve PowerShell komutları için özel kategoriler oluşturuldu.</p>
+            </div>
         </div>
+
+        <!-- 2. SEKME: CMD KOMUTLARI -->
+        <div id="cmd" class="tab-content">
+            <h2 class="section-title">Command Prompt (CMD) Komutları</h2>
+            <p style="margin-bottom: 15px;">Sık kullanılan sistem ve ağ CMD komutları burada yer alacaktır.</p>
+
+            <div class="card">
+                <h3>Ağ Yapılandırmasını Kontrol Etme</h3>
+                <div class="date">Örnek Taslak</div>
+                <p>IP adresi ve ağ detaylarını görüntülemek için <code>ipconfig /all</code> komutunu kullanabilirsiniz.</p>
+            </div>
+        </div>
+
+        <!-- 3. SEKME: POWERSHELL KOMUTLARI -->
+        <div id="powershell" class="tab-content">
+            <h2 class="section-title">PowerShell Komutları & Scriptler</h2>
+            <p style="margin-bottom: 15px;">Gelişmiş sistem yönetimi ve otomasyon komutları burada yer alacaktır.</p>
+
+            <div class="card">
+                <h3>Servis Durumlarını Listeleme</h3>
+                <div class="date">Örnek Taslak</div>
+                <p>Çalışan sistem servislerini listelemek için <code>Get-Service | Where-Object {$_.Status -eq "Running"}</code> komutunu kullanabilirsiniz.</p>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Sekme Değiştirme JS Kodları -->
+    <script>
+        function openTab(tabName) {
+            var i, tabContent, tabBtns;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            tabBtns = document.getElementsByClassName("nav-btn");
+            for (i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
 
 </body>
 </html>
