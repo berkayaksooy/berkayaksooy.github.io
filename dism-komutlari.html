@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DISM Komutları | Berkay Aksoy</title>
+    <meta name="description" content="Windows sistem görüntüsünün taranması, onarılması ve temizlenmesi için kullanılan beş temel DISM komutu.">
+
+    <!-- LinkedIn / sosyal medya önizleme kartı -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Berkay Aksoy | System Support">
+    <meta property="og:title" content="DISM Komutları | Windows Sistem Görüntüsünün Taranması, Onarılması ve Temizlenmesi">
+    <meta property="og:description" content="Sistem dosyalarındaki bozulmaları tespit edip onarmak ve güncelleştirmelerin kapladığı alanı geri kazanmak için kullanılan beş temel DISM komutu.">
+    <meta property="og:url" content="https://berkayaksooy.github.io/dism-komutlari.html">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="article:published_time" content="2026-10-12">
+    <meta property="article:author" content="Berkay Aksoy">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1><a href="index.html">Berkay Aksoy</a></h1>
+            <p class="subtitle">System Support & Technical Knowledge Base</p>
+
+            <div class="contact-links">
+                <a href="https://www.linkedin.com/in/berkay-aksoy-77ab60190" target="_blank" class="btn btn-linkedin">LinkedIn Profilim</a>
+                <a href="mailto:berrkayaksoy@gmail.com" class="btn btn-email">✉ berrkayaksoy@gmail.com</a>
+            </div>
+        </header>
+
+        <a class="back-link" href="index.html#cmd">← Tüm CMD rehberleri</a>
+
+        <article>
+            <h2>DISM Komutları | Windows Sistem Görüntüsünün Taranması, Onarılması ve Temizlenmesi</h2>
+            <div class="meta">
+                12 Ekim 2026 · <span class="tag">DISM</span><span class="tag">Onarım</span><span class="tag">Disk Temizliği</span>
+            </div>
+
+            <p>Aşağıdaki komutların Komut İstemi (CMD) <strong>yönetici yetkisiyle</strong> açılarak çalıştırılması gerekmektedir.</p>
+
+            <ol>
+                <li>
+                    <code-block>DISM /Online /Cleanup-Image /CheckHealth</code-block>
+                    Sistem görüntüsünde daha önce kaydedilmiş bir bozulma olup olmadığını kontrol eder. Tarama veya onarım işlemi gerçekleştirmez.
+                </li>
+                <li>
+                    <code-block>DISM /Online /Cleanup-Image /ScanHealth</code-block>
+                    Sistem görüntüsünü kapsamlı şekilde tarayarak bozulma olup olmadığını tespit eder. Onarım işlemi gerçekleştirmez.
+                </li>
+                <li>
+                    <code-block>DISM /Online /Cleanup-Image /RestoreHealth</code-block>
+                    Tespit edilen bozuk sistem dosyalarını onarır. Onarım için gerekli dosyalar Windows Update üzerinden indirildiğinden, işlem sırasında aktif bir internet bağlantısı gerekmektedir.
+                </li>
+                <li>
+                    <code-block>DISM /Online /Cleanup-Image /AnalyzeComponentStore</code-block>
+                    WinSxS bileşen deposunu analiz ederek gerçek boyutunu ve temizlik gerekip gerekmediğini raporlar.
+                </li>
+                <li>
+                    <code-block>DISM /Online /Cleanup-Image /StartComponentCleanup</code-block>
+                    Artık ihtiyaç duyulmayan eski güncelleştirme sürümlerini kaldırarak disk alanı kazandırır.
+                </li>
+            </ol>
+
+            <div class="share-bar">
+                <a id="share-linkedin" class="btn btn-linkedin" target="_blank" rel="noopener">LinkedIn'de Paylaş</a>
+                <button id="copy-link" class="btn btn-email" type="button">🔗 Linki Kopyala</button>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        // Panoya kopyalama (eski tarayıcılar için yedekli)
+        function copyText(text, onDone) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(onDone).catch(function () { fallbackCopy(text); onDone(); });
+            } else {
+                fallbackCopy(text);
+                onDone();
+            }
+        }
+
+        function fallbackCopy(text) {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand("copy"); } catch (e) {}
+            document.body.removeChild(ta);
+        }
+
+        // Her komut kutusuna "Kopyala" butonu ekle
+        document.querySelectorAll("code-block").forEach(function (block) {
+            var command = block.textContent.trim();
+            var btn = document.createElement("button");
+            btn.className = "copy-btn";
+            btn.type = "button";
+            btn.textContent = "Kopyala";
+            btn.addEventListener("click", function () {
+                copyText(command, function () {
+                    btn.textContent = "Kopyalandı ✓";
+                    btn.classList.add("copied");
+                    setTimeout(function () {
+                        btn.textContent = "Kopyala";
+                        btn.classList.remove("copied");
+                    }, 1800);
+                });
+            });
+            block.appendChild(btn);
+        });
+
+        // Paylaşım butonları
+        var pageUrl = "https://berkayaksooy.github.io/dism-komutlari.html";
+        document.getElementById("share-linkedin").href =
+            "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(pageUrl);
+
+        var linkBtn = document.getElementById("copy-link");
+        linkBtn.addEventListener("click", function () {
+            copyText(pageUrl, function () {
+                linkBtn.textContent = "✓ Link kopyalandı";
+                setTimeout(function () { linkBtn.textContent = "🔗 Linki Kopyala"; }, 1800);
+            });
+        });
+    </script>
+
+</body>
+</html>
