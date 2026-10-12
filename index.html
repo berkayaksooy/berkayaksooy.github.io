@@ -4,246 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Berkay Aksoy | System Support</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-            background-color: #0b0e14;
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(31, 111, 235, 0.15) 0%, transparent 75%),
-                linear-gradient(rgba(22, 27, 34, 0.7) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(22, 27, 34, 0.7) 1px, transparent 1px);
-            background-size: 100% 100%, 30px 30px, 30px 30px;
-            color: #c9d1d9;
-            line-height: 1.6;
-            padding: 20px;
-            min-height: 100vh;
-        }
+    <meta name="description" content="Windows, CMD ve PowerShell için sahada test edilmiş çözümler ve teknik rehberler.">
 
-        .container {
-            max-width: 850px;
-            margin: 30px auto;
-            background: rgba(22, 27, 34, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(56, 139, 253, 0.1);
-            border: 1px solid #30363d;
-        }
+    <!-- LinkedIn / sosyal medya önizleme kartı -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Berkay Aksoy | System Support">
+    <meta property="og:title" content="Berkay Aksoy | System Support & Technical Knowledge Base">
+    <meta property="og:description" content="Windows, CMD ve PowerShell için sahada test edilmiş çözümler ve teknik rehberler.">
+    <meta property="og:url" content="https://berkayaksooy.github.io/">
+    <meta property="og:locale" content="tr_TR">
 
-        header {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #30363d;
-            margin-bottom: 25px;
-        }
-
-        h1 { 
-            color: #58a6ff; 
-            font-size: 2.2rem; 
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
-            text-shadow: 0 0 10px rgba(88, 166, 255, 0.2);
-        }
-
-        p.subtitle { 
-            color: #8b949e; 
-            font-size: 0.95rem; 
-            margin-bottom: 18px;
-            font-weight: 500;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
-        }
-
-        .btn:hover { 
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
-
-        .btn-linkedin { 
-            background-color: #0a66c2; 
-            color: #ffffff; 
-            box-shadow: 0 0 10px rgba(10, 102, 194, 0.3);
-        }
-
-        .btn-email { 
-            background-color: #21262d; 
-            color: #58a6ff; 
-            border: 1px solid #30363d; 
-        }
-
-        nav {
-            display: flex;
-            gap: 10px;
-            border-bottom: 1px solid #30363d;
-            padding-bottom: 12px;
-            margin-bottom: 25px;
-        }
-
-        .nav-btn {
-            background: #161b22;
-            color: #8b949e;
-            border: 1px solid #30363d;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-
-        .nav-btn:hover { 
-            color: #f0f6fc; 
-            border-color: #8b949e; 
-            background: #21262d;
-        }
-
-        .nav-btn.active {
-            background: #1f6feb;
-            color: #ffffff;
-            border-color: #1f6feb;
-            box-shadow: 0 0 12px rgba(31, 111, 235, 0.4);
-        }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-
-        .section-title {
-            color: #f0f6fc;
-            margin: 20px 0 15px 0;
-            font-size: 1.3rem;
-            border-left: 4px solid #1f6feb;
-            padding-left: 10px;
-        }
-
-        .card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 18px 22px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 { color: #58a6ff; margin-bottom: 6px; font-size: 1.1rem; }
-        .card .date { color: #8b949e; font-size: 0.8rem; margin-bottom: 10px; }
-
-        /* AÇILIR/KAPANIR AKORDEON KART YAPISI */
-        .accordion-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            transition: border-color 0.2s ease;
-        }
-
-        .accordion-card:hover {
-            border-color: #58a6ff;
-        }
-
-        .accordion-header {
-            padding: 18px 22px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            user-select: none;
-            background: #161b22;
-        }
-
-        .accordion-header h3 {
-            color: #58a6ff;
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-
-        .accordion-header .icon {
-            color: #8b949e;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-card.open .accordion-header .icon {
-            transform: rotate(180deg);
-            color: #58a6ff;
-        }
-
-        .accordion-content {
-            display: none;
-            padding: 0 22px 22px 22px;
-            border-top: 1px solid #21262d;
-            background: #0d1117;
-        }
-
-        .accordion-card.open .accordion-content {
-            display: block;
-        }
-
-        .accordion-content p {
-            margin-top: 12px;
-            color: #c9d1d9;
-        }
-
-        .accordion-content ol, .accordion-content ul {
-            margin: 12px 0 12px 20px;
-            color: #c9d1d9;
-        }
-
-        .accordion-content li {
-            margin-bottom: 12px;
-        }
-
-        .alert-box {
-            background: rgba(210, 153, 34, 0.1);
-            border: 1px solid rgba(210, 153, 34, 0.4);
-            border-radius: 6px;
-            padding: 12px 16px;
-            margin-top: 15px;
-            color: #e3b341;
-            font-size: 0.9rem;
-        }
-
-        code-block {
-            display: block;
-            background: #161b22;
-            color: #79c0ff;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            border: 1px solid #30363d;
-            font-size: 0.9rem;
-            margin: 8px 0;
-            overflow-x: auto;
-        }
-
-        code {
-            background: #161b22;
-            color: #79c0ff;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            border: 1px solid #30363d;
-            font-size: 0.85rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -251,7 +22,7 @@
         <header>
             <h1>Berkay Aksoy</h1>
             <p class="subtitle">System Support & Technical Knowledge Base</p>
-            
+
             <div class="contact-links">
                 <a href="https://www.linkedin.com/in/berkay-aksoy-77ab60190" target="_blank" class="btn btn-linkedin">LinkedIn Profilim</a>
                 <a href="mailto:berrkayaksoy@gmail.com" class="btn btn-email">✉ berrkayaksoy@gmail.com</a>
@@ -260,59 +31,34 @@
 
         <!-- Menü Navigasyonu -->
         <nav>
-            <button class="nav-btn active" onclick="openTab('ana-sayfa')">Ana Sayfa</button>
-            <button class="nav-btn" onclick="openTab('cmd')">CMD Komutları</button>
-            <button class="nav-btn" onclick="openTab('powershell')">PowerShell Komutları</button>
+            <button class="nav-btn active" data-tab="ana-sayfa">Ana Sayfa</button>
+            <button class="nav-btn" data-tab="cmd">CMD Komutları</button>
+            <button class="nav-btn" data-tab="powershell">PowerShell Komutları</button>
         </nav>
 
         <!-- 1. SEKME: ANA SAYFA -->
         <div id="ana-sayfa" class="tab-content active">
             <h2 class="section-title">Son Güncellemeler</h2>
-            <div class="card">
-                <h3>CMD Rehberi Güncellendi</h3>
+
+            <a class="card post-card" href="dism-komutlari.html">
+                <h3>DISM Komutları Rehberi Yayında</h3>
                 <div class="date">12 Ekim 2026</div>
-                <p>DISM komutları rehberi "CMD Komutları" sekmesine eklendi.</p>
-            </div>
+                <p>Windows sistem görüntüsünün taranması, onarılması ve temizlenmesi için kullanılan DISM komutları rehberi eklendi.</p>
+                <span class="read-more">Yazıyı oku →</span>
+            </a>
         </div>
 
         <!-- 2. SEKME: CMD KOMUTLARI -->
         <div id="cmd" class="tab-content">
             <h2 class="section-title">Command Prompt (CMD) Rehberleri</h2>
 
-            <!-- AÇILIR KAPANIR YAZI KARTI: DISM KOMUTLARI -->
-            <div class="accordion-card">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <h3>DISM Komutları | Windows Sistem Görüntüsünün Taranması, Onarılması ve Temizlenmesi</h3>
-                    <span class="icon">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <p>Aşağıdaki komutların Komut İstemi (CMD) <strong>yönetici yetkisiyle</strong> açılarak çalıştırılması gerekmektedir.</p>
-
-                    <ol>
-                        <li>
-                            <code-block>DISM /Online /Cleanup-Image /CheckHealth</code-block>
-                            Sistem görüntüsünde daha önce kaydedilmiş bir bozulma olup olmadığını kontrol eder. Tarama veya onarım işlemi gerçekleştirmez.
-                        </li>
-                        <li>
-                            <code-block>DISM /Online /Cleanup-Image /ScanHealth</code-block>
-                            Sistem görüntüsünü kapsamlı şekilde tarayarak bozulma olup olmadığını tespit eder. Onarım işlemi gerçekleştirmez.
-                        </li>
-                        <li>
-                            <code-block>DISM /Online /Cleanup-Image /RestoreHealth</code-block>
-                            Tespit edilen bozuk sistem dosyalarını onarır. Onarım için gerekli dosyalar Windows Update üzerinden indirildiğinden, işlem sırasında aktif bir internet bağlantısı gerekmektedir.
-                        </li>
-                        <li>
-                            <code-block>DISM /Online /Cleanup-Image /AnalyzeComponentStore</code-block>
-                            WinSxS bileşen deposunu analiz ederek gerçek boyutunu ve temizlik gerekip gerekmediğini raporlar.
-                        </li>
-                        <li>
-                            <code-block>DISM /Online /Cleanup-Image /StartComponentCleanup</code-block>
-                            Artık ihtiyaç duyulmayan eski güncelleştirme sürümlerini kaldırarak disk alanı kazandırır.
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
+            <!-- YENİ YAZI EKLEMEK İÇİN: bu bloğu kopyalayıp başlık, tarih, açıklama ve linki değiştir -->
+            <a class="card post-card" href="dism-komutlari.html">
+                <h3>DISM Komutları | Windows Sistem Görüntüsünün Taranması, Onarılması ve Temizlenmesi</h3>
+                <div class="date">12 Ekim 2026 · <span class="tag">DISM</span><span class="tag">Onarım</span><span class="tag">Disk Temizliği</span></div>
+                <p>Sistem dosyalarındaki bozulmaları tespit edip onarmak ve güncelleştirmelerin kapladığı alanı geri kazanmak için kullanılan beş temel DISM komutu.</p>
+                <span class="read-more">Yazıyı oku →</span>
+            </a>
         </div>
 
         <!-- 3. SEKME: POWERSHELL KOMUTLARI -->
@@ -328,26 +74,26 @@
     </div>
 
     <script>
-        // Sekme Değiştirme Fonksiyonu
+        // Sekme değiştirme: butona tıklanınca ilgili sekmeyi açar
         function openTab(tabName) {
-            var i, tabContent, tabBtns;
-            tabContent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabContent.length; i++) {
-                tabContent[i].classList.remove("active");
-            }
-            tabBtns = document.getElementsByClassName("nav-btn");
-            for (i = 0; i < tabBtns.length; i++) {
-                tabBtns[i].classList.remove("active");
-            }
-            document.getElementById(tabName).classList.add("active");
-            event.currentTarget.classList.add("active");
+            var tab = document.getElementById(tabName);
+            if (!tab) return;
+            document.querySelectorAll(".tab-content").forEach(function (t) { t.classList.remove("active"); });
+            document.querySelectorAll(".nav-btn").forEach(function (b) {
+                b.classList.toggle("active", b.dataset.tab === tabName);
+            });
+            tab.classList.add("active");
         }
 
-        // Akordeon Aç/Kapat Fonksiyonu
-        function toggleAccordion(element) {
-            var card = element.parentElement;
-            card.classList.toggle("open");
-        }
+        document.querySelectorAll(".nav-btn").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                openTab(btn.dataset.tab);
+                history.replaceState(null, "", "#" + btn.dataset.tab);
+            });
+        });
+
+        // Adres #cmd veya #powershell ile açılırsa o sekmeyi göster
+        if (location.hash) openTab(location.hash.substring(1));
     </script>
 
 </body>
