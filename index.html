@@ -208,7 +208,7 @@
         }
 
         .accordion-content li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .alert-box {
@@ -282,32 +282,32 @@
             <!-- AÇILIR KAPANIR YAZI KARTI: DISM KOMUTLARI -->
             <div class="accordion-card">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <h3>DISM Komutları: Windows'u Onarın, Güncelleştirmelerin Kapladığı Alanı Geri Kazanın</h3>
-                
+                    <h3>DISM Komutları | Windows Sistem Görüntüsünün Taranması, Onarılması ve Temizlenmesi</h3>
+                    <span class="icon">▼</span>
                 </div>
                 <div class="accordion-content">
-                    <p>Aşağıdaki komutları çalıştırmak için Komut İstemi'ni (CMD) <strong>Yönetici</strong> olarak açın.</p>
+                    <p>Aşağıdaki komutların Komut İstemi (CMD) <strong>yönetici yetkisiyle</strong> açılarak çalıştırılması gerekmektedir.</p>
 
                     <ol>
                         <li>
                             <code-block>DISM /Online /Cleanup-Image /CheckHealth</code-block>
-                            Sistem görüntüsünde daha önce bir bozulma kaydedilmiş mi diye kontrol eder.
+                            Sistem görüntüsünde daha önce kaydedilmiş bir bozulma olup olmadığını kontrol eder. Tarama veya onarım işlemi gerçekleştirmez.
                         </li>
                         <li>
                             <code-block>DISM /Online /Cleanup-Image /ScanHealth</code-block>
-                            Sistemi baştan sona tarar ve bozulma olup olmadığını tespit eder. Onarım yapmaz.
+                            Sistem görüntüsünü kapsamlı şekilde tarayarak bozulma olup olmadığını tespit eder. Onarım işlemi gerçekleştirmez.
                         </li>
                         <li>
                             <code-block>DISM /Online /Cleanup-Image /RestoreHealth</code-block>
-                            Bozuk sistem dosyalarını onarır. Sağlam dosyaları Windows Update üzerinden indirdiği için internet bağlantısı gerekir.
+                            Tespit edilen bozuk sistem dosyalarını onarır. Onarım için gerekli dosyalar Windows Update üzerinden indirildiğinden, işlem sırasında aktif bir internet bağlantısı gerekmektedir.
                         </li>
                         <li>
                             <code-block>DISM /Online /Cleanup-Image /AnalyzeComponentStore</code-block>
-                            WinSxS klasörünü analiz eder ve temizlik gerekip gerekmediğini gösterir.
+                            WinSxS bileşen deposunu analiz ederek gerçek boyutunu ve temizlik gerekip gerekmediğini raporlar.
                         </li>
                         <li>
                             <code-block>DISM /Online /Cleanup-Image /StartComponentCleanup</code-block>
-                            Artık gerekmeyen eski güncelleştirme sürümlerini siler ve diskte yer açar.
+                            Artık ihtiyaç duyulmayan eski güncelleştirme sürümlerini kaldırarak disk alanı kazandırır.
                         </li>
                     </ol>
                 </div>
